@@ -1,0 +1,98 @@
+/* Body style */
+body							{ color: #eee; font-family: helvetica; font-size:0.8em; }
+h2 a							{ text-decoration: none; color: #eee; }
+a								{ color:#fff; }
+a:hover							{ color:#fff4bd; }
+form							{ padding-top: 18px; }
+div#penrose						{ width:100%; height:100%; overflow: hidden; position:absolute;}
+
+/* Control box */
+div#control						{ background: rgb(32, 32, 32); background: rgba(32, 32, 32, 0.8);}
+div#control						{ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B0202020, endColorstr=#B0202020); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B0202020, endColorstr=#B0202020)"; }
+div#control						{ -moz-border-radius: 15px; border-radius: 15px; }
+div#control						{ position:relative; width: 23%; top: 10px; left: 10px; overflow:hidden;}
+div#control						{ min-width: 270px; padding:7px 10px; }
+div#control .show				{ float:right; }
+div#control h2					{ display:block; float: left; cursor: pointer; font-size: 1.1em; height: 18px; width:32%; text-align:center; }
+div#control .hide 				{ cursor: pointer; }
+div#menu						{ display: block; clear:both; margin-top: 3px;  }
+div#aboutdiv					{ display: none; margin-top:25px; }
+div#aboutdiv p					{ display: block;margin: 15px 0; line-height:1.2em; }
+div#aboutdiv p.signature		{ display: block; width: 95%; text-align:right; font-style: italic; }
+div#usediv						{ display: none; margin-top:25px; }
+div#usediv p					{ display: block;margin: 15px 0; line-height:1.2em; }
+
+/* Share */
+div#download					{ padding-top:22px; }
+div#download div div			{ padding:5px 15px 0 0; float:left; }
+
+/* Form elements */
+div.params label				{ height:20px; display:inline; clear:both; }
+div.params label.header			{ font-size:1.1em; }
+div.paramlabel					{ height:20px; }
+div#method label				{ width:100%; float: left; padding-top: 0; margin-right:3px; }
+div#method span					{ display:block; float:left; margin:-5px 5px 5px -2px; height: 18px; }
+div#method input[type="text"]	{ padding: 1px 8px; background-color: #DDD; -moz-border-radius: 4px; border-radius: 4px; width: 78%; margin-left: 0; }
+div#method input[type="button"]	{ background-color: #eee; }
+input.custom					{ display:none; border: 1px solid #222; margin-bottom:-4px; }
+div.params						{ clear:both; margin-top: 28px; min-height:28px; margin-bottom: 5px; }
+
+/* sliders */
+.ui-slider .ui-slider-handle	{ height:0.8em; background: #ddd; top:-0.25em; }
+.ui-slider-horizontal			{ height:0.5em; }
+.ui-widget-header				{ -moz-border-radius: 4px; border-radius: 4px; border-color: #777; background: #777; }
+.ui-widget-content				{ border-width:0; background: #ccc; }
+div.ui-slider					{ margin: 3px 15px 0 0px; width: 90%; clear:both; }
+.count							{ float:right; text-align:right; padding-right:40px; width: 1.4em; height:22px; font-size: 1.2em; padding-left:5px; }
+
+/* Edge */
+div#ewdiv						{ margin-top:30px; }
+div#ewdiv input					{ float:left; margin-top:1px; margin-right:1.8em; }
+div#ewdiv label					{ margin-right:5px; float:left; clear:none; }
+div#edge						{ margin: -2px 3px 0 3px; }
+
+
+/* Colors */
+div#colors						{ clear:both; }
+label#colorsel					{ height:20px; padding-top:8px; display:block; }
+div.colorrow					{ clear:both; }
+div.colorrow label				{ padding-top: 3px; clear:both; float:left; margin-right:10px; height:18px; width:20%; }
+div.colorrow.hidden				{ display:none; }
+div.colorselector				{ -moz-border-radius: 4px; border-radius: 4px; float: left; position:relative; width: 40px; height: 16px; margin: 0 9%; background-color: #4BB; border: 1px solid #111; }
+div#colorheader span#rhombe		{ width: 33%; }
+div#colorheader span.rhombetype	{ width: 31%; }
+div#colorheader span			{ float: left; display: block; margin-bottom:5px; }
+
+/* Polygon */
+polygon 						{ stroke-linejoin: round; }
+
+/* Hide */
+span.hide						{ position:relative; float: right; }
+
+/* Default Colors
+.color1	 						{ fill: #411; stroke: #411; stroke-width: 1px; }
+.color2	 						{ fill: #422; stroke: #422; stroke-width: 1px; }
+.color3	 						{ fill: #433; stroke: #433; stroke-width: 1px; }
+.color4	 						{ fill: #444; stroke: #444; stroke-width: 1px; }
+.color5	 						{ fill: #455; stroke: #455; stroke-width: 1px; }
+.color6	 						{ fill: #466; stroke: #466; stroke-width: 1px; }
+.color7	 						{ fill: #477; stroke: #477; stroke-width: 1px; }
+.color8	 						{ fill: #488; stroke: #488; stroke-width: 1px; }
+.color9	 						{ fill: #499; stroke: #499; stroke-width: 1px; }
+.color10	 					{ fill: #4aa; stroke: #4aa; stroke-width: 1px; }
+.color11	 					{ fill: #4bb; stroke: #4bb; stroke-width: 1px; }
+.color12	 					{ fill: #4cc; stroke: #4cc; stroke-width: 1px; }
+.color13						{ fill: #4dd; stroke: #4dd; stroke-width: 1px; }
+.color14						{ fill: #4ee; stroke: #4ee; stroke-width: 1px; }
+.color15						{ fill: #4ff; stroke: #4ff; stroke-width: 1px; }
+.color16 						{ fill: #4fe; stroke: #5ff; stroke-width: 1px; }
+.color17 						{ fill: #4fd; stroke: #6ff; stroke-width: 1px; }
+.color18 						{ fill: #4fc; stroke: #7ff; stroke-width: 1px; }
+.color19 						{ fill: #4fb; stroke: #8ff; stroke-width: 1px; }
+.color20 						{ fill: #4fa; stroke: #9ff; stroke-width: 1px; }
+.color21 						{ fill: #4f9; stroke: #aff; stroke-width: 1px; }
+.color22 						{ fill: #4f8; stroke: #bff; stroke-width: 1px; }
+.color23 						{ fill: #4f7; stroke: #cff; stroke-width: 1px; }
+.color24 						{ fill: #4f6; stroke: #dff; stroke-width: 1px; }
+.color25 						{ fill: #4f5; stroke: #eff; stroke-width: 1px; }  */
+
