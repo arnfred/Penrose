@@ -1,4 +1,4 @@
-import com.typesafe.sbt.SbtStartScript
+import com.typesafe.startscript.StartScriptPlugin
 
 seq(SbtStartScript.startScriptForClassesSettings: _*)
 
