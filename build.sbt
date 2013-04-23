@@ -1,6 +1,6 @@
 import com.typesafe.startscript.StartScriptPlugin
 
-seq(SbtStartScript.startScriptForClassesSettings: _*)
+seq(StartScriptPlugin.startScriptForClassesSettings: _*)
 
 name := "Penrose"
 
