@@ -1,1 +1,1 @@
-web: target/start ifany.Main
+web: target/start penrose.Main
