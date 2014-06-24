@@ -1,1 +1,1 @@
-web: target/start penrose.Main
+web: python server.py ${PORT}
