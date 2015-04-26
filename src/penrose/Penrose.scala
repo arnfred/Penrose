@@ -27,7 +27,7 @@ object Server {
   def init = {
 
     // Where files for the web server are located
-    val resourceDir = new java.io.File("resources/")
+    val resourceDir = new java.io.File("static/")
 
     // The default port used for testing. This will have to change for deployment
     val testPort = Properties.envOrElse("PORT", "8000").toInt
