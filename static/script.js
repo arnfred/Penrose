@@ -147,7 +147,7 @@ function setColorGradient() {
 
 
 function setColor(type, index, fill, stroke) {
-	$("."+type+".color" + index).css("fill",fill).css("stroke", stroke);
+	$("."+type+".color" + index).css("fill","#" + fill).css("stroke", "#" + stroke);
 }
 	
 
