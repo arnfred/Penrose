@@ -36,6 +36,9 @@ div#method input[type="text"]	{ padding: 1px 8px; background-color: #DDD; -moz-b
 div#method input[type="button"]	{ background-color: #eee; }
 input.custom					{ display:none; border: 1px solid #222; margin-bottom:-4px; }
 div.params						{ clear:both; margin-top: 28px; min-height:28px; margin-bottom: 5px; }
+input.borderInput               { display:inline; width:50px; margin-left:10px; margin-right:10px }
+div#borderInputs                { margin-top: 5px; }
+
 
 /* sliders */
 .ui-slider .ui-slider-handle	{ height:0.8em; background: #ddd; top:-0.25em; }

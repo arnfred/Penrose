@@ -12,22 +12,16 @@ var Penrose		= function() {
 		toList	: function() { return [this.x, this.y]; }
 	}
 
-    var Limits = {
-      left      : -137,
-      right     : 1157,
-      top       : 105,
-      bottom    : 595,
-      within    : function(coord) {
-        var positionsWithinLimits = $.grep(coord, function(pos) {
-          var x = pos[0];
-          var y = pos[1];
-          return (x > Limits.left && 
-                  x < Limits.right &&
-                  y > Limits.top &&
-                  y < Limits.bottom);
-        });
-        return positionsWithinLimits.length > 0;
-      }
+    var within = function(coord, limits) {
+      var positionsWithinLimits = $.grep(coord, function(pos) {
+        var x = pos[0];
+        var y = pos[1];
+        return (x > limits.left && 
+                x < limits.right &&
+                y > limits.top &&
+                y < limits.bottom);
+      });
+      return positionsWithinLimits.length > 0;
     }
 
 	// A Triangle template
@@ -72,22 +66,19 @@ var Penrose		= function() {
 
 		// Drawing
 		coord		: function() { return [this.p1().toList(), this.p2().toList(), this.p3().toList()]; },
-		draw		: function(canvas, group, n, id) {
-
-						// Initialize ID
-						if (id == null) id = "1";
+		draw		: function(canvas, group, n, id, limits) {
 
 						// If n > 0, Draw children
 						if (n != null && n > 0) {
 							this.fill();
 							for (i in this.children) {
-								this.children[i].draw(canvas, group, n-1, id + "-" + (parseInt(i) + 1));
+								this.children[i].draw(canvas, group, n-1, id + "-" + (parseInt(i) + 1), limits);
 							}
 						}
 
 						// Else, draw this if it's within limits
 						else {
-                          if (Limits.within(this.coord())) {
+                          if (within(this.coord(), limits)) {
                             this.element = canvas.polygon(group, this.coord(), c(this.options,{ id : id }));
                           }
                           else {
@@ -249,26 +240,30 @@ var Penrose		= function() {
 	  return Math.max(myHeight,696);
 	}
 
+    function getLimits(width, height) {
+      var centreX = getWidth()/2.0;
+      var centreY = getHeight()/2.0;
+      return {
+        top: centreY - height/2.0,
+        bottom: centreY + height/2.0,
+        left: centreX - width/2.0,
+        right: centreX + width/2.0
+      }
+    }
+
 	// Return a function for drawing the pattern
-	return { draw	: function(canvas, depth) {
+	return { draw	: function(canvas, width, height, depth) {
 						var triangles = createTriangles();
 
 						// Get group
 						var g = canvas.group("viewport");
 
-						// Draw tiles
-						triangles.upper.draw(canvas, g, depth);
-						triangles.lower.draw(canvas, g, depth);
+                        // Get Limits
+                        var limits = getLimits(width, height);
 
-                        // Draw boxes to make lines smooth
-                        //var top = canvas.rect(g, -500, 0, getWidth()+500, Limits.top);
-                        //var bottom = canvas.rect(g, -500, Limits.bottom, getWidth()+500, getHeight());
-                        //var left = canvas.rect(g, -500, 0, Limits.left+500, getHeight());
-                        //var right = canvas.rect(g, Limits.right, 0, getWidth(), getHeight());
-						//$(top).addClass("borderBox");
-						//$(bottom).addClass("borderBox");
-						//$(left).addClass("borderBox");
-						//$(right).addClass("borderBox");
+						// Draw tiles
+						triangles.upper.draw(canvas, g, depth, 1, limits);
+						triangles.lower.draw(canvas, g, depth, 1, limits);
 					  }};
 
 }

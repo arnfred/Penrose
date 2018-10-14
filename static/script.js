@@ -26,6 +26,10 @@ $(document).ready(function () {
 	// Enable edges
 	$("input[name=e]").click(function () { setClasses(colorGen.n, colorGen.current); });
 
+    // Repaint on width and height change
+    $("#borderHeight").change(function() { repaint(svg, $("#depth").val()); });
+    $("#borderWidth").change(function() { repaint(svg, $("#depth").val()); });
+
 	// Set up show and hide form field
 	menufocus();
 
@@ -34,7 +38,13 @@ $(document).ready(function () {
 
 });
 
+function getBorderWidth() {
+  return parseInt($("input[id=borderWidth]").val());
+}
 
+function getBorderHeight() {
+  return parseInt($("input[id=borderHeight]").val());
+}
 // The functions used for generating the colors
 colorGen		= {
 	"add" 		: function (a,b) { return a + b; },
@@ -84,15 +94,6 @@ function getColors(n) {
 		dartend		: $("input[name='de']").val()
 	}
 }
-
-function isLabelPos(pos) {
-    return pos.length >= 4 && 
-    pos[0] === 1 && 
-    pos[1] === 1 &&
-    pos[2] === 1 && 
-    pos[3] === 1;
-}
-
 
 function setClasses(n, f) {
 	// For each polygon, calculate appropriate class
@@ -221,7 +222,7 @@ function repaint(svg, depth) {
 	// Clear current svg
 	svg.clear();
 	// Build new one
-	Penrose().draw(svg, depth);
+	Penrose().draw(svg, getBorderWidth(), getBorderHeight(), depth);
 	// Set classes
 	setClasses(colorGen.n, colorGen.current);
 	// Set color pickers
@@ -240,8 +241,6 @@ function colorSelectorSetup() {
 		var selector 	= $(this);
 		var type		= selector.attr("type"); 
 		var hidden		= $("#" + selector.attr("id") + "hidden");
-
-
 
 		// Bind colorpicker to element and call it
 		selector.unbind();

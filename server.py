@@ -36,6 +36,8 @@ class page :
         edge		= "off"
         edgecolor	= "ddd"
         edgewidth	= "8"
+        width           = "1000"
+        height          = "400"
         d = web.input(colors = colors,
                       method = method,
                       depth = depth,
@@ -46,7 +48,9 @@ class page :
                       de = dartend,
                       e = edge,
                       ec = edgecolor,
-                      ew = edgewidth)
+                      ew = edgewidth,
+                      width = width,
+                      height = height)
 
         return render.main(d)
 
