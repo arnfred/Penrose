@@ -85,6 +85,15 @@ function getColors(n) {
 	}
 }
 
+function isLabelPos(pos) {
+    return pos.length >= 4 && 
+    pos[0] === 1 && 
+    pos[1] === 1 &&
+    pos[2] === 1 && 
+    pos[3] === 1;
+}
+
+
 function setClasses(n, f) {
 	// For each polygon, calculate appropriate class
 	$("polygon").each(function () { 
@@ -92,8 +101,10 @@ function setClasses(n, f) {
 		var oldClass = pos.reduce(function (a,b) { return colorGen[colorGen.current](a,b) % colorGen.n; });
 		var newClass = pos.reduce(function (a,b) { return colorGen[f](a,b) % n; });
 		$(this).addClass($(this).attr("type")); 
+
+        // Special cases left blank for label information:
 		$(this).removeClass("color" + oldClass);
-		$(this).addClass("color" + newClass)
+        $(this).addClass("color" + newClass)
 	});
 
 	// Update colorgen
@@ -103,6 +114,8 @@ function setClasses(n, f) {
 	// Update all colors
 	setColorGradient();
 	setEdgeColors();
+    setLabelColor();
+    setBorderBoxColor();
 }
 
 
@@ -120,6 +133,13 @@ function setEdgeColors() {
 	}
 }
 
+function setLabelColor() {
+	$(".label").css("fill","#"+colorGen.edgeColor);
+}
+
+function setBorderBoxColor() {
+	$(".borderBox").css("fill","#"+colorGen.edgeColor);
+}
 
 function setColorGradient() {
 

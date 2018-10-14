@@ -12,6 +12,24 @@ var Penrose		= function() {
 		toList	: function() { return [this.x, this.y]; }
 	}
 
+    var Limits = {
+      left      : -137,
+      right     : 1157,
+      top       : 105,
+      bottom    : 595,
+      within    : function(coord) {
+        var positionsWithinLimits = $.grep(coord, function(pos) {
+          var x = pos[0];
+          var y = pos[1];
+          return (x > Limits.left && 
+                  x < Limits.right &&
+                  y > Limits.top &&
+                  y < Limits.bottom);
+        });
+        return positionsWithinLimits.length > 0;
+      }
+    }
+
 	// A Triangle template
 	var Triangle	= {
 
@@ -67,8 +85,15 @@ var Penrose		= function() {
 							}
 						}
 
-						// Else, draw this
-						else this.element = canvas.polygon(group, this.coord(), c(this.options,{ id : id }));
+						// Else, draw this if it's within limits
+						else {
+                          if (Limits.within(this.coord())) {
+                            this.element = canvas.polygon(group, this.coord(), c(this.options,{ id : id }));
+                          }
+                          else {
+                            //console.debug("Skipping polygon with coordinates: ",this.coord());
+                          }
+                        }
 						// Add class
 						$(this.element).addClass(this.type);
 					  },
@@ -234,6 +259,16 @@ var Penrose		= function() {
 						// Draw tiles
 						triangles.upper.draw(canvas, g, depth);
 						triangles.lower.draw(canvas, g, depth);
+
+                        // Draw boxes to make lines smooth
+                        //var top = canvas.rect(g, -500, 0, getWidth()+500, Limits.top);
+                        //var bottom = canvas.rect(g, -500, Limits.bottom, getWidth()+500, getHeight());
+                        //var left = canvas.rect(g, -500, 0, Limits.left+500, getHeight());
+                        //var right = canvas.rect(g, Limits.right, 0, getWidth(), getHeight());
+						//$(top).addClass("borderBox");
+						//$(bottom).addClass("borderBox");
+						//$(left).addClass("borderBox");
+						//$(right).addClass("borderBox");
 					  }};
 
 }
