@@ -113,9 +113,9 @@ $def with(data)
               <div class="paramlabel"><label class="header">Boundary Box</label>
               <div id="borderInputs">
                 <label class="header" for="borderWidth">Width:</label>
-                <input id="borderWidth" class="borderInput" value="$data["width"]"/>
+                <input id="borderWidth" class="borderInput" name="width" value="$data["width"]"/>
                 <label class="header" for="borderHeight">Height:</label>
-                <input id="borderHeight" class="borderInput" value="$data["height"]"/>
+                <input id="borderHeight" class="borderInput" name="height" value="$data["height"]"/>
               </div>
               </div>
           </div>
@@ -187,6 +187,11 @@ $def with(data)
           </div>
 
           <div><span class="hide blah">Hide</span></div>
+
+
+          $if "hidden" in data:
+            $for h in data["hidden"]:
+              <input type="hidden" value="$h" name="hidden" />
 
         </form>
       </div>

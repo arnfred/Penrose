@@ -36,8 +36,8 @@ class page :
         edge		= "off"
         edgecolor	= "ddd"
         edgewidth	= "8"
-        width           = "1000"
-        height          = "400"
+        width           = "1200"
+        height          = "280"
         d = web.input(colors = colors,
                       method = method,
                       depth = depth,
@@ -50,7 +50,8 @@ class page :
                       ec = edgecolor,
                       ew = edgewidth,
                       width = width,
-                      height = height)
+                      height = height,
+                      hidden = [])
 
         return render.main(d)
 

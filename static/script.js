@@ -33,6 +33,8 @@ $(document).ready(function () {
 	// Set up show and hide form field
 	menufocus();
 
+    // Set up hiding and showing triangles
+
 	// Paint window
 	repaint(svg, depth);
 
@@ -50,6 +52,19 @@ colorGen		= {
 	"add" 		: function (a,b) { return a + b; },
 	"multiply"	: function (a,b) { return a * b; },
 	"concat"	: function (a,b) { return a + "" + b; },
+}
+
+function togglePolygons() {
+  $("polygon").click(function(e) { 
+    var id = $(e.currentTarget).attr("id");
+    if ($("#" + id).css("opacity") === "1") {
+      $("polygon[id=" + id + "]").fadeTo(100,0);
+      $('<input>').attr('type','hidden').attr("name", "hidden").attr("value", id).appendTo("form");
+    } else {
+      $("polygon[id=" + id + "]").fadeTo(100,100);
+      $("input[value=" + id + "]").remove();
+    }
+  });
 }
 
 function menufocus() {
@@ -116,7 +131,6 @@ function setClasses(n, f) {
 	setColorGradient();
 	setEdgeColors();
     setLabelColor();
-    setBorderBoxColor();
 }
 
 
@@ -136,10 +150,6 @@ function setEdgeColors() {
 
 function setLabelColor() {
 	$(".label").css("fill","#"+colorGen.edgeColor);
-}
-
-function setBorderBoxColor() {
-	$(".borderBox").css("fill","#"+colorGen.edgeColor);
 }
 
 function setColorGradient() {
@@ -223,11 +233,12 @@ function repaint(svg, depth) {
 	svg.clear();
 	// Build new one
 	Penrose().draw(svg, getBorderWidth(), getBorderHeight(), depth);
+    // hide hidden polygons
+    _.each(getHidden(), function(id) { $("polygon[id=" + id + "]").fadeTo(0,0); })
 	// Set classes
 	setClasses(colorGen.n, colorGen.current);
 	// Set color pickers
-	//colorPolygonSetup();
-	//
+    togglePolygons();
 	// Set up panning and zooming
 	$('svg').svgPan("viewport");
 }
@@ -336,6 +347,10 @@ function methodSetup() {
 
 function getLink() {
 	return "index?" + $("form").serialize()
+}
+
+function getHidden() {
+  return $("input[name=hidden]").map(function(v,i) { return $(i).val(); }).toArray();
 }
 
 function makeGradient(start,end,n) {
