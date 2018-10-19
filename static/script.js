@@ -61,7 +61,7 @@ function togglePolygons() {
       $("polygon[id=" + id + "]").fadeTo(100,0);
       $('<input>').attr('type','hidden').attr("name", "hidden").attr("value", id).appendTo("form");
     } else {
-      $("polygon[id=" + id + "]").fadeTo(100,100);
+      $("polygon[id=" + id + "]").fadeTo(100,1);
       $("input[value=" + id + "]").remove();
     }
   });

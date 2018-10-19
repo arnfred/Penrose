@@ -21,7 +21,7 @@ var Penrose		= function() {
                 y > limits.top &&
                 y < limits.bottom);
       });
-      return positionsWithinLimits.length > 0;
+      return positionsWithinLimits.length >= 2;
     }
 
 	// A Triangle template
