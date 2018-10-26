@@ -1,3 +1,3 @@
 resolvers += Classpaths.typesafeResolver
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.9.0")
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.3.0")
