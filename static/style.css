@@ -5,6 +5,7 @@ a								{ color:#fff; }
 a:hover							{ color:#fff4bd; }
 form							{ padding-top: 18px; }
 div#penrose						{ width:100%; height:100%; overflow: hidden; position:absolute;}
+div#penrose svg					{ height:100%; }
 
 /* Control box */
 div#control						{ background: rgb(32, 32, 32); background: rgba(32, 32, 32, 0.8);}
